@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('product-form');
     const tableBody = document.querySelector('#product-table tbody');
 
-    // Função para carregar os produtos
+
     function loadProducts() {
         fetch('crud.php?action=read')
             .then(response => response.json())
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
-    // Função para salvar produto
+
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         const formData = new FormData(form);
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Função para editar produto
+
     window.editProduct = (id) => {
         fetch(`crud.php?action=edit&id=${id}`)
             .then(response => response.json())
@@ -52,12 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     };
 
-    // Função para deletar produto
+
     window.deleteProduct = (id) => {
         fetch(`crud.php?action=delete&id=${id}`)
             .then(() => loadProducts());
     };
 
-    // Carregar produtos ao iniciar
     loadProducts();
 });

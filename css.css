@@ -9,7 +9,7 @@ body {
 }
 
 header {
-    background-color: rgba(44, 62, 80, 0.8); /* Fundo semitransparente */
+    background-color: rgba(44, 62, 80, 0.8); 
     color: white;
     padding: 10px 20px;
     display: flex;
@@ -86,7 +86,7 @@ header {
 #cart-details {
     margin: 20px;
     padding: 20px;
-    background: rgba(235, 113, 82, 0.9); /* Fundo levemente transparente */
+    background: rgba(235, 113, 82, 0.9);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
@@ -103,7 +103,7 @@ header {
 }
 
 #cart-table th {
-    background-color: rgba(43, 26, 25, 0.8); /* Fundo semitransparente */
+    background-color: rgba(43, 26, 25, 0.8); 
     color: white;
 }
 
