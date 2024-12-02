@@ -14,34 +14,42 @@
             Carrinho: <span id="cart-count">0</span> item(s) | <span id="cart-total">R$0,00</span>
         </div>
     </header>
+
     <main>
-        <section class="products">
-            <div class="product">
-                <img src="62d4ffd7388bf5bada36364ecfd10cd2.jpg" alt="Tênis 1">
-                <h3>Tênis Nike Air Max</h3>
-                <p class="price">R$299,99</p>
-                <button class="add-to-cart" data-name="Tênis Nike Air Max" data-price="299.99">Adicionar ao Carrinho</button>
-            </div>
-            <div class="product">
-                <img src="75de355d66a2a52b4f769975b4c89b18.jpg" alt="Tênis 2">
-                <h3>Tênis Adidas Ultraboost</h3>
-                <p class="price">R$349,99</p>
-                <button class="add-to-cart" data-name="Tênis Adidas Ultraboost" data-price="349.99">Adicionar ao Carrinho</button>
-            </div>
-            <div class="product">
-                <img src="b41bfd02a240b060469df90688df9414.jpg" alt="Tênis 3">
-                <h3>Tênis Puma RS-X</h3>
-                <p class="price">R$249,99</p>
-                <button class="add-to-cart" data-name="Tênis Puma RS-X" data-price="249.99">Adicionar ao Carrinho</button>
-            </div>
-            <div class="product">
-                <img src="357dfae56634217073dbe5c135614034.jpg" alt="Tênis 4">
-                <h3>Tênis New Balance 574</h3>
-                <p class="price">R$279,99</p>
-                <button class="add-to-cart" data-name="Tênis New Balance 574" data-price="279.99">Adicionar ao Carrinho</button>
-            </div>
+        <section class="products" id="products">
+            <!-- Os produtos serão carregados aqui dinamicamente -->
         </section>
     </main>
+
     <script src="js.js"></script>
+
+    <script>
+        // Função para carregar os produtos dinamicamente da API PHP
+        function loadProducts() {
+            fetch('crud.php?action=read')
+                .then(response => response.json())
+                .then(products => {
+                    const productsSection = document.getElementById('products');
+                    productsSection.innerHTML = ''; // Limpa a seção antes de adicionar os produtos
+
+                    products.forEach(product => {
+                        const productDiv = document.createElement('div');
+                        productDiv.classList.add('product');
+                        productDiv.innerHTML = `
+                            <img src="${product.imagem}" alt="${product.nome}">
+                            <h3>${product.nome}</h3>
+                            <p class="price">R$${parseFloat(product.preco).toFixed(2)}</p>
+                            <button class="add-to-cart" data-id="${product.id}" data-name="${product.nome}" data-price="${product.preco}">Adicionar ao Carrinho</button>
+                        `;
+                        productsSection.appendChild(productDiv);
+                    });
+                })
+                .catch(error => console.error('Erro ao carregar os produtos:', error));
+        }
+
+        // Carregar os produtos assim que a página carregar
+        document.addEventListener('DOMContentLoaded', loadProducts);
+    </script>
+
 </body>
 </html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD - Loja de Tênis</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <header>
+        <h1>Gerenciamento de Produtos</h1>
+    </header>
+    <main>
+        <form id="product-form">
+            <input type="hidden" id="id" name="id">
+            <input type="text" id="nome" name="nome" placeholder="Nome do Produto" required>
+            <input type="number" id="preco" name="preco" placeholder="Preço" step="0.01" required>
+            <input type="number" id="quantidade" name="quantidade" placeholder="Quantidade" required>
+            <input type="text" id="imagem" name="imagem" placeholder="URL da Imagem" required>
+            <button type="submit">Salvar Produto</button>
+        </form>
+
+        <table id="product-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>
+                    <th>Imagem</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Produtos serão carregados aqui -->
+            </tbody>
+        </table>
+    </main>
+    <script src="adm.html"></script>
+</body>
+</html>
